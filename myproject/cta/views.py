@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # BAD PRACTICE: hardcoding API key directly instead of using environment variables
-CTA_API_KEY = os.getenv(CTA_KEY)
+CTA_API_KEY = os.getenv("CTA_KEY")
 
 def get_cta_trains(request):
     """
