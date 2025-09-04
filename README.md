@@ -23,7 +23,7 @@
 
 **Q3a:** How can your group communicate when doing the Full Stack Group Project?  
 **Q3b:** What are the usernames of each group member on that platform?  
-**Q3c:** What is your group’s expected response time to messages and working hours?  
+**Q3c:** What is your group’s expected response time to messages?  
 
 **Example:**  
 *We will use Discord for communication*  
@@ -32,7 +32,6 @@
 *Justin - ghostmechanic*  
 *Claudia - ninth.py*  
 *Mauricio - itsperi*  
-*Working hours - anytime*  
 *Our expected response time will be within 12 hours.*  
 
 ---
@@ -58,24 +57,30 @@
 
 ---
 
-# Screentime Minimization Track  
+# Full Stack Group Project Track  
+---
+
+# Track 1: 
+**Problem 1:**
+**Solution 1:** 
+
+**Problem 2:** 
+**Solution 2:** 
 
 ---
 
-# UIC Student Themed Application Track  
+# Track 2: 
 
-**Problem 1:** Difficulty of meeting new people and making friends  
-**Solution 1:** An app to connect UIC students in different majors based on interests and allowing them to pick a place to meet.  
+**Problem 3:**
+**Solution 3:** 
 
-**Problem 2:** Lack of a centralized club/campus event site  
-**Solution 2:** A site that allows student organizations to post announcements for their events so that students can easily find events or clubs they may be interested in.  
+**Problem 4:** 
+**Solution 4:**  
 
----
+# Track 3: 
 
-# Cultural Preservation Track  
+**Problem 5:**
+**Solution 5:** 
 
-**Problem 3:** Danger of undocumented students being reported on campus or in city  
-**Solution 3:** A mobile app that informs/warns participants when/where government entities like ICE are operating.  
-
-**Problem 4:** Student desire to learn about culturally significant calendar events related to university holidays/events  
-**Solution 4:** App that collates UIC library database articles/books on relevant and time sensitive events (i.e. Lunar New Year).  
+**Problem 6:** 
+**Solution 6:** 
