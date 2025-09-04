@@ -61,10 +61,12 @@
 ---
 
 # Track 1: 
-**Problem 1:**
+**Problem 1:** 
+
 **Solution 1:** 
 
 **Problem 2:** 
+
 **Solution 2:** 
 
 ---
@@ -72,15 +74,19 @@
 # Track 2: 
 
 **Problem 3:**
+
 **Solution 3:** 
 
 **Problem 4:** 
+
 **Solution 4:**  
 
 # Track 3: 
 
 **Problem 5:**
+
 **Solution 5:** 
 
 **Problem 6:** 
+
 **Solution 6:** 
