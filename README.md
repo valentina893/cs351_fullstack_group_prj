@@ -60,7 +60,7 @@
 # Full Stack Group Project Track  
 ---
 
-# Track 1: 
+# Track 1: Tackling Generative AI Consequences
 **Problem 1:** 
 
 **Solution 1:** 
@@ -71,7 +71,7 @@
 
 ---
 
-# Track 2: 
+# Track 2: Track 2: Technology for Public Goods 
 
 **Problem 3:**
 
@@ -81,19 +81,20 @@
 
 **Solution 4:**  
 
-# Track 3: 
+# Track 3: Creative Coding and Cultural Expression
 
-**Problem 5:**
+**Idea - Story - Inspiration 5:**
 
-**Solution 5:** 
+**Implementation 5:**
 
-**Problem 6:** 
+**Idea - Story - Inspiration 6:**
 
-**Solution 6:** 
+**Implementation 6:**
+
 
 # Idea Finalization
 
-**From 6 of the problems and solutions you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
+**From 6 project ideas you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
 
 # Extra Credit (Only do this if you are done with Idea Finalization)
 
