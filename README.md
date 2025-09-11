@@ -108,7 +108,7 @@
 
 **Q3: Which third-party API(s) will you integrate into your project? What data will you pull from the API(s), and how will you use it in your application?**
 
-**Q4: Does your API key has limitations such as rate limits or downtime? How are you going to deal with that**
+**Q4: Does your API key has limitations such as rate limits or downtime? How are you going to deal with that?**
 
 ## Authentication and Security
 
