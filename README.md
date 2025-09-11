@@ -95,6 +95,12 @@
 
 **From 6 of the problems and solutions you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
 
-**Please
+# Extra Credit (Only do this if you are done with Idea Finalization)
 
-# Extra Credit
+**Database Design**
+
+**Third-Party API Integration**
+
+**Authentication and Security**
+
+**Deployment**
