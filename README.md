@@ -71,7 +71,7 @@
 
 ---
 
-# Track 2: Track 2: Technology for Public Goods 
+# Track 2: Technology for Public Goods 
 
 **Problem 3:**
 
