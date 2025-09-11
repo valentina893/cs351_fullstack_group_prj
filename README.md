@@ -99,8 +99,24 @@
 
 **Database Design**
 
+**Q1: What database are you using for your project (SQLite, PostgreSQL, noSQL, MongoDB,...), and why do you choose it?**
+
+**Q2: How will database be helpful to your project? How will you design your database to support your application features?**
+
 **Third-Party API Integration**
+
+**Q3: Which third-party API(s) will you integrate into your project? What data will you pull from the API(s), and how will you use it in your application?**
+
+**Q4: Does your API key has limitations such as rate limits or downtime? How are you going to deal with that**
 
 **Authentication and Security**
 
+**Q5: What authentication method will you use (e.g., username/password, OAuth, JWT)?**
+
+**Q6: How will you store and protect sensitive user data (e.g., passwords, tokens)?**
+
 **Deployment**
+
+**Q7: Where will you deploy your project (e.g., Heroku, AWS, Render)? How will you manage environment variables and secrets during deployment?**
+
+**Q8: How will you ensure your deployment is reliable and easy to update?**
