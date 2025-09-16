@@ -70,36 +70,32 @@
 
 **Solution 1:** 
 
-**Problem 2:** 
-
-**Solution 2:** 
-
 ---
 
 # Track 2: Technology for Public Goods 
 
-**Problem 3:**
+**Problem 2:**
 
-**Solution 3:** 
+**Solution 2:** 
 
-**Problem 4:** 
+**Problem 3:** 
 
-**Solution 4:**  
+**Solution 3:**  
 
 # Track 3: Creative Coding and Cultural Expression
+
+**Idea - Story - Inspiration 4:**
+
+**Implementation 4:**
 
 **Idea - Story - Inspiration 5:**
 
 **Implementation 5:**
 
-**Idea - Story - Inspiration 6:**
-
-**Implementation 6:**
-
 
 # Idea Finalization
 
-**From 6 project ideas you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
+**From 5 project ideas you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
 
 # Extra Credit (Only do this if you are done with Idea Finalization)
 
