@@ -57,6 +57,11 @@
 
 ---
 
+# Tech Stacks
+
+**Q6:** Which tech stacks will your group use? (Django + React or Flask + React)
+
+---
 # Full Stack Group Project Track  
 ---
 
