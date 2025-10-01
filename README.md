@@ -10,6 +10,8 @@
 # Timeline: Weekly Meeting Goals  
 
 **Q2:** What is your goals that your group want to achieve in each weekly meeting?  
+We would like each meeting to have some portion to go over and reivew the code we currently have and what needs to be done in order to stay on track. During this week we are planning to finalize the idea, the week of 10/06 we plan to figure out the data structures and have the plan ironed out, meaning we would like to know exactly what our app is going to do, maybe even come up with UI layout using figma. Then 10/20 we should have made some progress and have some componenets functionality completed for example maybe a log in.  10/ 27 work heavily on front end and make sure everyhting is working properly as expected and connect backend to frontend. 11/01 we plan on going through and dounle checking everything works and fixing any minor bugs. Then the following weeks we plan on just fixing the UI and getting it to where we want it to be and seeking help if nessecary. 
+
 **Example:**  
 *Prior to 3/13: Weekly Meeting we will plan out some preliminary info/idea for the project itself ahead of the scheduled meeting like which data source/API and data structures we will use in our backend. We will browse [the given list of public APIs for inspiration](https://github.com/public-apis/public-apis).*  
 
@@ -39,7 +41,10 @@
 # Norms  
 
 **Q4a:** How will your group handle situations when there is conflict in your group?  
+We plan on just have a mojority vote to resolve conflicts in terms of which direction to take.
+
 **Q4b:** How will your group handle situations when a member is not contributing enough?  
+We will message them and tell them directly and tell them which areas they need to contribute so that everything is fair. 
 
 **Example:**  
 *If there is a disagreement on direction, we will resolve it with a unanimous vote.*  
@@ -76,9 +81,10 @@ We are planning to use react + flask
 # Track 2: Technology for Public Goods 
 
 **Problem 2:**
+Student at UIC might not know how difficult or enjoying or even what to expect from certain courses, this makes students go in and do their own research and reading booring course description.
 
 **Solution 2:** 
-
+We propose to build a app where there will be courses and users can put there experience from the course as well how diccult or hard it was and what they learned which would simplify or atleast educate stduents about the course and thus leading them to a better position to pick if that course is good for their goals. This app will almost be like a rate my professor for courses.
 **Problem 3:** 
 
 **Solution 3:**  
