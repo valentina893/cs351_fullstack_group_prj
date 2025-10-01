@@ -55,7 +55,9 @@ We will message them and tell them directly and tell them which areas they need 
 
 # Roles  
 
-**Q5:** How will your group divide your role in the Group Project?  
+**Q5:** How will your group divide your role in the Group Project? 
+
+Nathan - Backend
 
 **Example:**  
 *Mauricio - Backend, Justin - Project Lead, Claudia - Frontend.*  
@@ -85,6 +87,7 @@ Student at UIC might not know how difficult or enjoying or even what to expect f
 
 **Solution 2:** 
 We propose to build a app where there will be courses and users can put there experience from the course as well how diccult or hard it was and what they learned which would simplify or atleast educate stduents about the course and thus leading them to a better position to pick if that course is good for their goals. This app will almost be like a rate my professor for courses.
+
 **Problem 3:** 
 
 **Solution 3:**  
