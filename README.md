@@ -22,8 +22,8 @@
 # Communication  
 
 **Q3a:** We will be using discord to communicate about group project and keep each other updated. 
-**Q3b:** What are the usernames of each group member on that platform?  
-**Q3c:** What is your group’s expected response time to messages?  
+**Q3b:** dalejpj- Dale, 
+**Q3c:** Our expected reponse time is 10 hours. 
 
 **Example:**  
 *We will use Discord for communication*  
@@ -60,6 +60,7 @@
 # Tech Stacks
 
 **Q6:** Which tech stacks will your group use? (Django + React or Flask + React)
+we are planning to use react + flask
 
 ---
 # Full Stack Group Project Track  
