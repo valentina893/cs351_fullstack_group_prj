@@ -22,7 +22,7 @@
 # Communication  
 
 **Q3a:** We will be using discord to communicate about group project and keep each other updated. 
-**Q3b:** dalejpj- Dale, 
+**Q3b:** dalejpj - Dale, nathan083474 - Nathan
 **Q3c:** Our expected reponse time is 10 hours. 
 
 **Example:**  
@@ -60,7 +60,7 @@
 # Tech Stacks
 
 **Q6:** Which tech stacks will your group use? (Django + React or Flask + React)
-we are planning to use react + flask
+We are planning to use react + flask
 
 ---
 # Full Stack Group Project Track  
