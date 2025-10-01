@@ -21,7 +21,7 @@
 
 # Communication  
 
-**Q3a:** How can your group communicate when doing the Full Stack Group Project?  
+**Q3a:** We will be using discord to communicate about group project and keep each other updated. 
 **Q3b:** What are the usernames of each group member on that platform?  
 **Q3c:** What is your group’s expected response time to messages?  
 
