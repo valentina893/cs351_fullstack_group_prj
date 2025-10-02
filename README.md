@@ -96,9 +96,10 @@ Student at UIC might not know how difficult or enjoying or even what to expect f
 We propose to build a app where there will be courses and users can put there experience from the course as well how diccult or hard it was and what they learned which would simplify or atleast educate stduents about the course and thus leading them to a better position to pick if that course is good for their goals. This app will almost be like a rate my professor for courses.
 
 **Problem 3:** 
+There are many community resources out their for local residents, but finding them in a certain area can be difficult.
 
-
-**Solution 3:**  
+**Solution 3:**
+We can create an app that given a location, will give a list of nearby community resources like food pantries. The app will also include details of the resources such as an address or links to websites.
 
 # Track 3: Creative Coding and Cultural Expression
 
