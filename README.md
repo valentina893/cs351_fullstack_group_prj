@@ -25,7 +25,7 @@ We would like each meeting to have some portion to go over and reivew the code w
 # Communication  
 
 **Q3a:** We will be using discord to communicate about group project and keep each other updated. 
-**Q3b:** dalejpj - Dale, nathan083474 - Nathan
+**Q3b:** dalejpj - Dale, nathan083474 - Nathan, Legend- Musa, valentina- valentina
 **Q3c:** Our expected reponse time is 10 hours. 
 
 ---
@@ -55,9 +55,6 @@ Musa-Frontend
 Valentina - Frontend
 
 
-**Example:**  
-*Mauricio - Backend, Justin - Project Lead, Claudia - Frontend.*  
-
 ---
 
 # Tech Stacks
@@ -81,10 +78,10 @@ We propose to build a sort of game to help educate people in how to detect AI ge
 # Track 2: Technology for Public Goods 
 
 **Problem 2:**
-Student at UIC might not know how difficult or enjoying or even what to expect from certain courses, this makes students go in and do their own research and reading a boring course description.
+Individuals struggle to adopt sustainable behaviors daily.
 
 **Solution 2:** 
-We propose to build a app where there will be courses and users can put there experience from the course as well how diccult or hard it was and what they learned which would simplify or atleast educate stduents about the course and thus leading them to a better position to pick if that course is good for their goals. This app will almost be like a rate my professor for courses.
+We propose to build a app where the app that nudges users with small, personalized sustainability tips and tracks progress
 
 **Problem 3:** 
 There are many community resources out their for local residents, but finding them in a certain area can be difficult.
@@ -106,7 +103,7 @@ We can create an app that given a location, will give a list of nearby community
 # Idea Finalization
 
 **From 5 project ideas you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
-We are choosing the app where we build a rating system for classes, we chose this idea since we believe it can help current students and future students make choices based off their goals and what they think they can handle.
+We are planning to do the behavioral app since it will benefit the person and the community, since the person will have lower cost, and the community will save resources as well.
 
 # Extra Credit (Only do this if you are done with Idea Finalization)
 
