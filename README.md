@@ -1,6 +1,7 @@
 # Logistics  
 
 **Q1:** At what time in the week would your group be available to meet online?  
+we would be availble on thursdays after 4 pm 
 **Example:**  
 *We are available to meet online on weekends from 12pm-8pm (12-2pm Saturday + Sunday), as well as from 4pm-6pm on Fridays.*  
 *Our weekly meeting will be Thursday 11am-12pm.*  
@@ -58,6 +59,10 @@ We will message them and tell them directly and tell them which areas they need 
 **Q5:** How will your group divide your role in the Group Project? 
 
 Nathan - Backend
+Dale - Backend
+Musa-Frontend
+Valentina - Frontend
+
 
 **Example:**  
 *Mauricio - Backend, Justin - Project Lead, Claudia - Frontend.*  
@@ -106,6 +111,7 @@ We propose to build a app where there will be courses and users can put there ex
 # Idea Finalization
 
 **From 5 project ideas you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
+We are choosing the app where we build a rating system for classes, we chose this idea since we believe it can help current students and future students make choices based off their goals and what they think they can handle .
 
 # Extra Credit (Only do this if you are done with Idea Finalization)
 
@@ -118,12 +124,15 @@ We propose to build a app where there will be courses and users can put there ex
 ## Third-Party API Integration
 
 **Q3: Which third-party API(s) will you integrate into your project? What data will you pull from the API(s), and how will you use it in your application?**
+we might use mailboxlayer to confirm the email is active
 
 **Q4: Does your API key has limitations such as rate limits or downtime? How are you going to deal with that?**
+500 requests per month
 
 ## Authentication and Security
 
 **Q5: What authentication method will you use (e.g., username/password, OAuth, JWT)?**
+We are planning to use username and password and maybe even a Oauth.
 
 **Q6: How will you store and protect sensitive user data (e.g., passwords, tokens)?**
 
