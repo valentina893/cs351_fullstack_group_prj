@@ -80,9 +80,10 @@ We are planning to use react + flask
 
 # Track 1: Tackling Generative AI Consequences
 **Problem 1:** 
+There is a lot of content which is out there and we struggle to disinguish them so we think people should have more knowledge about how Ai generates content and how to check if certain content is AI written
 
 **Solution 1:** 
-
+We would make a game where there are two texts where one is human and the other is generated and the user will have to determine which is Ai after the selctions the user will get a score and feedback as well.
 ---
 
 # Track 2: Technology for Public Goods 
