@@ -140,5 +140,6 @@ We are planning to use username and password and maybe even a Oauth.
 ## Deployment
 
 **Q7: Where will you deploy your project (e.g., Heroku, AWS, Render)? How will you manage environment variables and secrets during deployment?**
+I think we will try to use AWS.
 
 **Q8: How will you ensure your deployment is reliable and easy to update?**
