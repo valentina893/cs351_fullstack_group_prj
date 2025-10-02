@@ -28,15 +28,6 @@ We would like each meeting to have some portion to go over and reivew the code w
 **Q3b:** dalejpj - Dale, nathan083474 - Nathan
 **Q3c:** Our expected reponse time is 10 hours. 
 
-**Example:**  
-*We will use Discord for communication*  
-
-*Usernames:*  
-*Justin - ghostmechanic*  
-*Claudia - ninth.py*  
-*Mauricio - itsperi*  
-*Our expected response time will be within 12 hours.*  
-
 ---
 
 # Norms  
