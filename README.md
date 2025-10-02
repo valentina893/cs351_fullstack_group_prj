@@ -78,10 +78,10 @@ We propose to build a sort of game to help educate people in how to detect AI ge
 # Track 2: Technology for Public Goods 
 
 **Problem 2:**
-Individuals struggle to adopt sustainable behaviors daily.
+Individuals struggle to adopt sustainable behaviors daily. People may be unaware of how simple things they do each day can be harmful for the planet like using too much plastic. Some people may want to gain eco-friendly habits but struggle with integrating those habits into their daily life.
 
 **Solution 2:** 
-We propose to build a app where the app that nudges users with small, personalized sustainability tips and tracks progress
+We propose to build a app where the app that nudges users with small, personalized sustainability tips and tracks progress. The app will be targeted mostly to students at UIC. The app can give challenges or trackers that can help students gain eco-friendly habits. Ex. A tracker to keep track on how many plastic bottles someone uses in a week. Or a tracker for how much water you drink with reusable water bottles.
 
 **Problem 3:** 
 There are many community resources out their for local residents, but finding them in a certain area can be difficult.
