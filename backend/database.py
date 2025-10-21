@@ -40,35 +40,25 @@ def add_user(username, password):
     cur = conn.cursor()
 
     try:
-        # Check if username already exists
         cur.execute("SELECT id FROM users WHERE username = %s;", (username,))
         existing = cur.fetchone()
 
         if existing:
-            print(f"⚠️ User '{username}' already exists. Skipping insert.")
-            return None  # or return existing[0] if you want to reuse the same ID
+            print(f"User '{username}' already exists. Returning existing ID.")
+            return existing[0]  # Return their user_id
 
-        # Insert new user
         cur.execute(
             "INSERT INTO users (username, password) VALUES (%s, %s) RETURNING id;",
             (username, password)
         )
         user_id = cur.fetchone()[0]
         conn.commit()
-        print(f"✅ Added new user '{username}' (id={user_id})")
         return user_id
-
-    except errors.UniqueViolation:
-        # Catch any unique constraint errors (safety net)
-        conn.rollback()
-        print(f"⚠️ User '{username}' already exists (unique constraint).")
-        return None
 
     except Exception as e:
         conn.rollback()
-        print(f"❌ Error adding user: {e}")
+        print(f"Error adding user: {e}")
         return None
-
     finally:
         cur.close()
         conn.close()
