@@ -1,19 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const SignupPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleSignup = (event) => {
     event.preventDefault();
-    navigate('/');
+    // TODO: Here you would normally send data to your backend
+    navigate('/'); // redirect after successful signup
   };
-
-  const goToSignup = () => {
-
-    navigate('/signup');
-  }
-
 
   return (
     <div
@@ -22,12 +17,12 @@ const LoginPage = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#282c34', 
+        backgroundColor: '#282c34',
       }}
     >
       <div
         style={{
-          backgroundColor: 'white', 
+          backgroundColor: 'white',
           padding: '40px',
           borderRadius: '8px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
@@ -36,13 +31,14 @@ const LoginPage = () => {
           maxWidth: '400px',
         }}
       >
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Welcome Please Log in</h2>
-        <form onSubmit={handleLogin}>
+        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Sign Up</h2>
+        <form onSubmit={handleSignup}>
           <div style={{ marginBottom: '15px' }}>
             <label>Username:</label>
             <input
               type="text"
               name="username"
+              required
               style={{
                 width: '100%',
                 padding: '8px',
@@ -57,6 +53,7 @@ const LoginPage = () => {
             <input
               type="password"
               name="password"
+              required
               style={{
                 width: '100%',
                 padding: '8px',
@@ -67,11 +64,11 @@ const LoginPage = () => {
             />
           </div>
           <button
-            type="Log In"
+            type="submit"
             style={{
               width: '100%',
               padding: '10px',
-              backgroundColor: '#007bff',
+              backgroundColor: '#28a745',
               color: 'white',
               border: 'none',
               borderRadius: '4px',
@@ -80,11 +77,11 @@ const LoginPage = () => {
               marginBottom: '10px'
             }}
           >
-            Login
+            Sign Up
           </button>
         </form>
         <button
-          onClick={goToSignup}
+          onClick={() => navigate('/login')}
           style={{
             width: '100%',
             padding: '10px',
@@ -93,14 +90,14 @@ const LoginPage = () => {
             border: 'none',
             borderRadius: '4px',
             cursor: 'pointer',
-            fontSize: '16px',
+            fontSize: '16px'
           }}
         >
-          Sign Up
+          Back to Login
         </button>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignupPage;
