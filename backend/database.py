@@ -1,5 +1,9 @@
 """
-Database utility functions for PostgreSQL. Database is ran locally.
+Database utility functions for PostgreSQL. 
+Database is ran locally.
+
+Application will pull in user data for 
+login info, and interests.
 
 Code written by Valentina RS
 """

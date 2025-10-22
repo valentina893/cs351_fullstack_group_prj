@@ -1,5 +1,15 @@
 """
-Trie data structure for storing the user's interests.
+Trie used for storing user's interest.
+
+Most optimal advanced data structure since 
+we want the user to search their interests.
+
+Other data structures wouldn't allow us to 
+quickly store words and have fast look-up times.
+ - We originally considered a priority queue for 
+   recommending interests, but we realized the 
+   search engine api was already good for that.
+
 
 Code written by Valentina RS
 """

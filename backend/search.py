@@ -1,5 +1,6 @@
 """
-DuckDuckGo Search API utility functions for pulling web data.
+DuckDuckGo Search API utility functions for pulling 
+web data as our data source. No pre-processing needed.
 
 Code written by Valentina RS
 """
