@@ -34,7 +34,6 @@ def create_tables():
     cur.close()
     conn.close()
 
-
 def add_user(username, password):
     conn = connect_db()
     cur = conn.cursor()
@@ -63,7 +62,6 @@ def add_user(username, password):
         cur.close()
         conn.close()
 
-
 def add_interests(user_id, interests):
     """interests: a list of strings"""
     conn = connect_db()
@@ -73,7 +71,6 @@ def add_interests(user_id, interests):
     conn.commit()
     cur.close()
     conn.close()
-
 
 def get_user_interests(user_id):
     conn = connect_db()
