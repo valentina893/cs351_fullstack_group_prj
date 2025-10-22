@@ -1,3 +1,9 @@
+"""
+DuckDuckGo Search API utility functions for pulling web data.
+
+Code written by Valentina RS
+"""
+
 from ddgs import DDGS
 
 def ddg_general_search(query, max_results=5):

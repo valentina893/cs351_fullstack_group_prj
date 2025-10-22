@@ -1,3 +1,9 @@
+"""
+Database utility functions for PostgreSQL. Database is ran locally.
+
+Code written by Valentina RS
+"""
+
 import psycopg2
 from psycopg2 import sql, errors
 

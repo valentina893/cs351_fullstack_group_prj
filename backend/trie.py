@@ -1,3 +1,9 @@
+"""
+Trie data structure for storing the user's interests.
+
+Code written by Valentina RS
+"""
+
 class TrieNode:
     def __init__(self):
         self.children = {}
