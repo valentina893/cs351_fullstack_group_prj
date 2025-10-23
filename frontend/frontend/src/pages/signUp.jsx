@@ -7,7 +7,7 @@ const SignupPage = () => {
   const handleSignup = (event) => {
     event.preventDefault();
     // TODO: Here you would normally send data to your backend
-    navigate('/'); // redirect after successful signup
+    navigate('/Intrests'); // redirect after successful signup
   };
 
   return (
