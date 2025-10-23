@@ -1,3 +1,9 @@
+"""
+Main backend script for application.
+
+Code written by Valentina RS
+"""
+
 from flask import Flask
 
 app = Flask(__name__)
