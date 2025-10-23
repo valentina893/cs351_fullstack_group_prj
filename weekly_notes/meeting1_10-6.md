@@ -1,4 +1,4 @@
-**Meeting 1 Notes (9/29) – Project Discussion**
+**Meeting 1 Notes (10/6) – Project Discussion**
 
 **Topic: Project Track and Idea Selection**
 
