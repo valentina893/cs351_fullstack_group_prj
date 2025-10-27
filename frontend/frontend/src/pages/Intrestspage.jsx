@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import {useNavigate} from 'react-router-dom';
 
-
 const IntrestsPage = () => {
     const navigate = useNavigate();
 
@@ -89,7 +88,7 @@ const IntrestsPage = () => {
               }}
             >
               <button
-                onClick={() => navigate('/search')}
+                onClick={() => navigate('/home')}
                 style={{
                   width: '154px',
                   height: '40px',
