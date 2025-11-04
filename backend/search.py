@@ -26,4 +26,4 @@ def test():
     print(f"🔍 Results for: {query}\n")
     print(info)
 
-test()
+#test()
