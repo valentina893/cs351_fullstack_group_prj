@@ -1,19 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const [error, setError] = useState(""); 
+
+  // Log when component mounts to confirm it's rendering
+  React.useEffect(() => {
+    console.log("LoginPage mounted");
+  }, []);
+
+  const handleLogin = async (event) => {
+    console.log("handleLogin triggered"); 
     event.preventDefault();
-    navigate('/home');
+
+    const username = event.target.username.value;
+    const password = event.target.password.value;
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Invalid credentials.");
+        return;
+      }
+
+      localStorage.setItem("user_id", data.user_id);
+
+      console.log("Logged in:", data);
+      navigate('/home');
+    } catch (err) {
+      console.error(err);
+      setError("Failed to connect to server.");
+    }
   };
 
   const goToSignup = () => {
-
-    navigate('/signup');
-  }
-
+    navigate('/signup'); 
+  };
 
   return (
     <div
@@ -67,7 +98,7 @@ const LoginPage = () => {
             />
           </div>
           <button
-            type="Log In"
+            type="submit"
             style={{
               width: '100%',
               padding: '10px',
@@ -98,6 +129,11 @@ const LoginPage = () => {
         >
           Sign Up
         </button>
+        {error && (
+          <div style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>
+            {error}
+          </div>
+        )}
       </div>
     </div>
   );
