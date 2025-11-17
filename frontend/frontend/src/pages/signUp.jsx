@@ -1,14 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  const handleSignup = (event) => {
+  const handleSignup = async (event) => {
     event.preventDefault();
-    // TODO: Here you would normally send data to your backend
-    navigate('/Intrests'); // redirect after successful signup
+  
+    const username = event.target.username.value;
+    const password = event.target.password.value;
+  
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        setError(data.error || "Something went wrong.");
+        return;
+      }
+  
+      console.log("User registered:", data);
+      navigate('/Interests');   // ✔ correct redirect
+    } catch (err) {
+      console.error(err);
+      setError("Failed to connect to server.");
+    }
   };
+  
 
   return (
     <div
@@ -95,6 +121,11 @@ const SignupPage = () => {
         >
           Back to Login
         </button>
+        {error && (
+          <div style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>
+            {error}
+          </div>
+        )}
       </div>
     </div>
   );
