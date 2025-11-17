@@ -12,6 +12,7 @@ import SearchPage from './pages/search';
 function App() {
   return (
     <Routes>
+      <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/Intrests" element={<IntrestsPage />}/>

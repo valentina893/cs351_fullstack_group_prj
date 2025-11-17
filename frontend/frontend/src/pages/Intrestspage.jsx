@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 const IntrestsPage = () => {
     const navigate = useNavigate();
 
-    const interest = [
+    const interests = [
       "Sports",
       "Food",
       "Computer Science",
@@ -13,15 +13,102 @@ const IntrestsPage = () => {
       "Art",
     ];
 
+    const sportInterests = [
+      "Basketball",
+      "Football",
+      "Soccer",
+      "Tennis",
+      "Baseball",
+      "Hockey"
+    ]
+
+    const foodIntersests = [
+      "Fast Food",
+      "Chinese",
+      "Sandwich",
+      "Indian",
+      "Italian",
+      "Ice Cream",
+      "Mexican"
+    ]
+
+    const csInterests = [
+      "Software Development",
+      "Software Engineering",
+      "Cybersecurity",
+      "Hackathons",
+      "Interview Practice",
+      "Data Science"
+    ]
+
+    const healthInterests = [
+      "Recreation",
+      "Counseling",
+      "Food Assistance",
+    ]
+
+    const musicInterests = [
+      "Concerts",
+      "Jazz",
+      "Symphonic Band",
+      "Orchestra",
+      "Choir",
+      "Percussion"
+    ]
+
+    const artInterests = [
+      "History",
+      "Exhibitions",
+      "Art Fests",
+      "Galleries"
+    ]
+
+    
+
+    const styles = {
+      container: {
+        width: '200px',
+        margin: '20px auto',
+        fontFamily: 'Arial, sans-serif',
+      },
+      scrollBox: {
+        maxHeight: '100px',
+        overflowY: 'auto',
+        border: '1px solid #ccc',
+        padding: '10px',
+        borderRadius: '5px',
+      },
+      option: {
+        padding: '8px',
+        borderBottom: '1px solid #eee',
+        cursor: 'pointer',
+      },
+    };
+
+    const scrollInterests = ({ interests }) => {
+      return (
+        <div style={styles.container}>
+          <h2>Select a Few Interests</h2>
+          <div style={styles.scrollBox}>
+            {interests.map((interest, index) => (
+              <div key={index} style={styles.interest}>
+                {interest}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
     const [selected, setSelected] = useState(new Set());
 
-    const handleClick = (interest) => {
+    const handleClick = (interests) => {
       const updated = new Set(selected);
-      if(updated.has(interest)) {
-        updated.delete(interest);
+      if(updated.has(interests)) {
+        updated.delete(interests);
       }
       else{
-        updated.add(interest);
+        updated.add(interests);
       }
       setSelected(updated);
     }
@@ -60,22 +147,22 @@ const IntrestsPage = () => {
             justifyItems: "center",
           }}
         >
-          {interest.map((interest) =>(
+          {interests.map((interests) =>(
             <button
-              key={interest}
-              onClick={() => handleClick(interest)}
+              key={interests}
+              onClick={() => handleClick(interests)}
               style={{
                 width: "85px",
                 height: "60px",
-                backgroundColor: selected.has(interest) ? "#1e1e1e" : "#ffffff",
-                color: selected.has(interest) ? "#ffffff" : "#081317",
+                backgroundColor: selected.has(interests) ? "#1e1e1e" : "#ffffff",
+                color: selected.has(interests) ? "#ffffff" : "#081317",
                 border: "1px solid #ccc",
                 borderRadius: "6px",
                 cursor: "pointer",
                 fontSize: "14px",
               }}
               >
-                {interest}
+                {interests}
               </button>
             ))}
 
