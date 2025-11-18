@@ -5,6 +5,7 @@ web data as our data source. No pre-processing needed.
 Code written by Valentina RS
 """
 
+import json
 from ddgs import DDGS
 
 def ddg_general_search(query, max_results=5):
@@ -16,14 +17,13 @@ def ddg_general_search(query, max_results=5):
                 "url": r["href"],
                 "snippet": r["body"]
             })
-    return results
+    return json.dumps(results, indent=4)
 
-def main():
+def test():
     query = "university of illinois at chicago events"
     info = ddg_general_search(query)
 
     print(f"🔍 Results for: {query}\n")
-    for i, item in enumerate(info, 1):
-        print(f"{i}. {item['title']}\n   {item['url']}\n   {item['snippet']}\n")
+    print(info)
 
-main()
+#test()
