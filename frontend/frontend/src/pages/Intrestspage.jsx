@@ -4,15 +4,6 @@ import {useNavigate} from 'react-router-dom';
 const IntrestsPage = () => {
     const navigate = useNavigate();
 
-    const interests = [
-      "Sports",
-      "Food",
-      "Computer Science",
-      "Wellness/ Health",
-      "Music",
-      "Art",
-    ];
-
     const sportInterests = [
       "Basketball",
       "Football",
@@ -63,54 +54,118 @@ const IntrestsPage = () => {
       "Galleries"
     ]
 
-    
+    // const interests = {
+    //   "Sports": sportInterests,
+    //   "Food": foodIntersests,
+    //   "Computer Science": csInterests,
+    //   "Wellness/Health": healthInterests,
+    //   "Music": musicInterests,
+    //   "Art": artInterests,
+    // };
 
-    const styles = {
-      container: {
-        width: '200px',
-        margin: '20px auto',
-        fontFamily: 'Arial, sans-serif',
-      },
-      scrollBox: {
-        maxHeight: '100px',
-        overflowY: 'auto',
-        border: '1px solid #ccc',
-        padding: '10px',
-        borderRadius: '5px',
-      },
-      option: {
-        padding: '8px',
-        borderBottom: '1px solid #eee',
-        cursor: 'pointer',
-      },
-    };
+    const interests = [
+      "Sports",
+      "Food",
+      "Computer Science",
+      "Wellness/Health",
+      "Music",
+      "Art",
+    ];
 
-    const scrollInterests = ({ interests }) => {
-      return (
-        <div style={styles.container}>
-          <h2>Select a Few Interests</h2>
-          <div style={styles.scrollBox}>
-            {interests.map((interest, index) => (
-              <div key={index} style={styles.interest}>
-                {interest}
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    }
+    const [list, chosenOptions] = useState([])
+
+    // const [allSelected, setSelected] = useState([]);
+
+    // function handleMultipleOptions(subInterests, e){
+    //   const selectedFromCategory = Array.from(
+    //     e.target.selectedOptions,
+    //     (o) => o.value
+    //   )
+
+    //   setSelected(prev => {
+    //     const removeFromThisCategory = prev.filter(
+    //       (item) => !subInterests.includes(item)
+    //     )
+
+    //     return [...removeFromThisCategory, ...selectedFromCategory]
+    //   })
+    // }
+
+    // return(
+    //   <div style={{
+    //     // width: "50v",
+    //     height: "100vh",
+    //     display: 'flex',
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     backgroundColor: '#282c34',
+    //   }}>
+    //     <label>Select from Catagories</label>
+
+    //     <div className="scroll-box">
+    //       {Object.entries(interests).map(([key, subInterests], index) => (
+    //         <div key={index} style={{marginBottom: "12px"}}>
+    //           <label>{key}</label>
+
+    //           <select
+    //             multiple
+    //             onChange={(e) => handleMultipleOptions(subInterests, e)}
+    //             style={{width: "100%", marginTop: "5px"}}
+    //           >
+    //             {subInterests.map((subInt, i) => (
+    //               <option key={i} value={subInt}>
+    //                 {subInt}
+    //               </option>
+    //             ))}
+    //           </select>
+    //         </div>
+    //       ))}
+    //     </div>
+
+    //     <h3>All selected:</h3>
+    //     <pre>{JSON.stringify(allSelected, null, 2)}</pre>
+
+    //     <button
+    //       onClick={() => navigate('/home')}
+    //       style={{
+    //         width: '254px',
+    //         height: '40px',
+    //         backgroundColor: '#ffffffff',
+    //         color: '#081317',
+    //         border: 'none',
+    //         borderRadius: '4px',
+    //         cursor: 'pointer',
+    //         fontSize: '16px',
+    //       }}
+    //     >
+    //       Confirm
+    //     </button>
+    //   </div>
+    // )
 
     const [selected, setSelected] = useState(new Set());
 
-    const handleClick = (interests) => {
+
+    const handleClick = (interest) => {
       const updated = new Set(selected);
-      if(updated.has(interests)) {
-        updated.delete(interests);
+      if(updated.has(interest)) {
+        updated.delete(interest);
+        // chosenOptions.remove(interest)
+
       }
       else{
-        updated.add(interests);
+        updated.add(interest);
+        // chosenOptions.add(interest)
       }
       setSelected(updated);
+    }
+
+    const sendInterests = () =>{
+      const selectedInterests = Array.from(selected)
+
+      try{
+
+      }
     }
 
     return(
@@ -147,22 +202,22 @@ const IntrestsPage = () => {
             justifyItems: "center",
           }}
         >
-          {interests.map((interests) =>(
+          {interests.map((interest) =>(
             <button
-              key={interests}
-              onClick={() => handleClick(interests)}
+              key={interest}
+              onClick={() => handleClick(interest)}
               style={{
                 width: "85px",
                 height: "60px",
-                backgroundColor: selected.has(interests) ? "#1e1e1e" : "#ffffff",
-                color: selected.has(interests) ? "#ffffff" : "#081317",
+                backgroundColor: selected.has(interest) ? "#1e1e1e" : "#ffffff",
+                color: selected.has(interest) ? "#ffffff" : "#081317",
                 border: "1px solid #ccc",
                 borderRadius: "6px",
                 cursor: "pointer",
                 fontSize: "14px",
               }}
               >
-                {interests}
+                {interest}
               </button>
             ))}
 
@@ -177,7 +232,7 @@ const IntrestsPage = () => {
               <button
                 onClick={() => navigate('/home')}
                 style={{
-                  width: '154px',
+                  width: '254px',
                   height: '40px',
                   backgroundColor: '#ffffffff',
                   color: '#081317',
