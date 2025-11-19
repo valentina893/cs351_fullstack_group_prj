@@ -1,0 +1,50 @@
+* [33m10dfcee[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mnathan-branch[m[33m)[m Upadete interest page
+* [33m7e01f25[m[33m ([m[1;31morigin/nathan-branch[m[33m)[m Add interest page
+*   [33m5178902[m Merge pull request #3 from valentina893/dale
+[32m|[m[33m\[m  
+[32m|[m * [33mb315da5[m[33m ([m[1;31morigin/dale[m[33m)[m added more files to frontend and got log in page created
+[32m|[m * [33mc2366fa[m worked on backend
+* [33m|[m [33m2ff82b3[m added prototype flow illustration
+* [33m|[m [33m29f03d6[m Add files via upload
+* [33m|[m [33mb31e6ae[m set up the flask
+* [33m|[m [33m6a29146[m[33m ([m[1;31morigin/groupProject3/subBranch3[m[33m, [m[1;32mgroupProject3/subBranch3[m[33m)[m Problem 2
+* [33m|[m [33m20bcd2d[m revised idea
+* [33m|[m [33m5162a0b[m valentina: updated README
+* [33m|[m [33m37e007d[m[33m ([m[1;31morigin/groupProject2/subBranch2[m[33m, [m[1;32mgroupProject2/subBranch2[m[33m)[m Problem 3
+* [33m|[m   [33m48f6fce[m Merge branch 'groupProject/subBranch'
+[34m|[m[35m\[m [33m\[m  
+[34m|[m * [33m|[m [33ma852176[m[33m ([m[1;31morigin/groupProject/subBranch[m[33m, [m[1;32mgroupProject/subBranch[m[33m)[m Problem 1
+* [35m|[m [33m|[m   [33ma8ec500[m Merge pull request #2 from valentina893/dale
+[36m|[m[33m\[m [35m\[m [33m\[m  
+[36m|[m [33m|[m [35m|[m[33m/[m  
+[36m|[m [33m|[m[33m/[m[35m|[m   
+[36m|[m * [35m|[m [33md7947cd[m Testing branching
+[36m|[m[36m/[m [35m/[m  
+* [35m/[m [33m772ac11[m added an idea for the track and just testing out branching
+[35m|[m[35m/[m  
+* [33m35cc494[m Asnwered most of questions and put in roles(subject to change)
+* [33ma6e506b[m Update Readme
+*   [33m3fff4a1[m B Merge branch 'main' of https://github.com/valentina893/cs351_fullstack_group_prj Added username
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33mf489b13[m answered more questions, but some I just put a generic answer which can be changed
+* [1;33m|[m [33meab35b2[m Added my discord username
+[1;33m|[m[1;33m/[m  
+* [33me25875a[m answered some more questions
+* [33mca60a07[m Answered Q3a, to start
+* [33m24939ab[m Reducing milestone requried
+* [33m70ffdf4[m Add more questions
+* [33m5a1296a[m Adding figma folder
+* [33m617e1bd[m Adding folders
+* [33m565e015[m Add weekly notes
+* [33m9f03407[m Adding project structures
+* [33m6e09067[m Fix bugs
+* [33m8cef36e[m Fixing track 3 question
+* [33mf05a9e7[m Fixing the title
+* [33m51c759e[m Adding extra credit questions
+* [33me50a4b4[m Adding extra credit idea
+* [33mb08f2e6[m Add more to the Milestone 2
+* [33mc70f8bd[m Update requirement
+* [33mdb06f35[m Fix bugs
+* [33m26bdda2[m Update README.md template
+* [33m78f94f8[m Rewrite README.md
+* [33m11c4af6[m Test
