@@ -160,11 +160,25 @@ const IntrestsPage = () => {
       setSelected(updated);
     }
 
-    const sendInterests = () =>{
+    const sendInterests = async () =>{
       const selectedInterests = Array.from(selected)
 
       try{
+        const res = await fetch("https//localhost:5000/intrests", {
+          method: "POST",
+          headers:{
+            "Content-Type" : "application/json"
+          },
+          body: JSON.stringify({
+            interests: interestsArray
+          })
+        })
 
+        const data = await res.json();
+        console.log("Server response:", data);
+
+      } catch (err) {
+        console.error("Errero sending intrests:". err);
       }
     }
 

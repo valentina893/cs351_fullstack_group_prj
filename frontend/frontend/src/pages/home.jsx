@@ -98,13 +98,14 @@ const HomePage = () => {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        height: "100vh",
         width: "100vw",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
         backgroundColor: "#282c34",
         paddingTop: "40px",
+        overflow: "auto"
       }}
     >
 
@@ -114,7 +115,7 @@ const HomePage = () => {
           backgroundColor: "#081317",
           borderRadius: "8px",
           boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-          width: "98%",
+          width: "100%",
           padding: "20px",
         }}
       >
