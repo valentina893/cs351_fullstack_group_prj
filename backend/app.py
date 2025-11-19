@@ -26,7 +26,8 @@ from database import (
 # SEARCH FUNCTIONS
 # -----------------------
 import json
-from ddgs import DDGS
+# from ddgs import DDGS
+from duckduckgo_search import DDGS
 
 
 # ---------------------------------------
@@ -142,6 +143,7 @@ def add_user_interests():
         return jsonify({"error": "Interests must be a list"}), 400
 
     add_interests(session["user_id"], interests)
+    print("Received interests: ", interests)
 
     return jsonify({"message": "Interests added"})
 

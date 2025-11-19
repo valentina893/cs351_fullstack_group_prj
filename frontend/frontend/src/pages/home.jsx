@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import {useNavigate} from 'react-router-dom';
 
 const HomePage = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -6,6 +7,7 @@ const HomePage = () => {
   const infoRef = useRef(null);
   const [interests, setInterests] = useState([]);
   const [eventsByInterest, setEventsByInterest] = useState({});
+  const navigate = useNavigate();
 
   // // Fetch user interests and events
   // useEffect(() => {
@@ -89,26 +91,35 @@ const HomePage = () => {
   const eventButton = {
     padding: "35px",
     fontSize: "16px",
-    borderRadius: "6px",
+    borderRadius: "8px",
     border: "1px solid #ccc",
     backgroundColor: "#ffffff",
     cursor: "pointer",
   };
 
+  const searchButton = {
+    width: "120px",
+    height: "50px",
+    fontSize: "16px",
+    borderRadius: "100px",
+    border: "1px solid #ccc",
+    backgroundColor: "#ffffff",
+    cursor: "pointer",
+  }
+
   return (
     <div
       style={{
         height: "100vh",
-        width: "100vw",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
         backgroundColor: "#282c34",
-        paddingTop: "40px",
+        // paddingTop: "40px",
         overflow: "auto"
       }}
     >
-
 
       <div
         style={{
@@ -116,10 +127,22 @@ const HomePage = () => {
           borderRadius: "8px",
           boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
           width: "100%",
-          padding: "20px",
+          height: "100vh",
+          boxSizing: "border-box",
+          padding: "20px"
         }}
       >
-        <h2 style={{ color: "white", marginBottom: "20px" }}>Hello User</h2>
+
+        <div style={{display: "flex", justifyContent: "space-between"}}>
+
+          <h2 style={{ color: "white", marginBottom: "20px" }}>Hello User</h2>
+
+          <button
+            style={searchButton}
+            onClick={() => navigate('/search')}
+          >Search</button>
+
+        </div>
 
         {/* Render events grouped by interest */}
         {interests.map((interest) => (
