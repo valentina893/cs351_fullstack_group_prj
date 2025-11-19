@@ -6,7 +6,7 @@ import Login from './pages/login';
 import Home from './pages/home';
 import PrivateRoute from './components/route';
 import SignupPage from './pages/signUp';
-import IntrestsPage from './pages/Intrestspage';
+import InterestsPage from './pages/interests';
 import HomePage from './pages/home';
 import SearchPage from './pages/search';
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route path="/Intrests" element={<IntrestsPage />}/>
+      <Route path="/interests" element={<InterestsPage />}/>
       <Route path="/" element={<HomePage/>}/>
       <Route path="/Search" element={< SearchPage/>}/>
       {/* <Route 

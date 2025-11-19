@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import {useNavigate} from 'react-router-dom';
 
-const IntrestsPage = () => {
+const InterestsPage = () => {
     const navigate = useNavigate();
 
     const sportInterests = [
@@ -163,14 +163,19 @@ const IntrestsPage = () => {
     const sendInterests = async () =>{
       const selectedInterests = Array.from(selected)
 
+      // const query = new URLSearchParams({
+      //   selected: selectedInterests.join(",")
+      // })
+
       try{
-        const res = await fetch("https//localhost:5000/intrests", {
+        const res = await fetch("https//localhost:5000/add_interests", {
           method: "POST",
-          headers:{
-            "Content-Type" : "application/json"
+          headers: {
+            "Content-Type": "application/json"
           },
+          credentials: "include",
           body: JSON.stringify({
-            interests: interestsArray
+            interests: selectedInterests
           })
         })
 
@@ -178,7 +183,7 @@ const IntrestsPage = () => {
         console.log("Server response:", data);
 
       } catch (err) {
-        console.error("Errero sending intrests:". err);
+        console.error("Sending Error", err);
       }
     }
 
@@ -244,7 +249,10 @@ const IntrestsPage = () => {
               }}
             >
               <button
-                onClick={() => navigate('/home')}
+                onClick={async () => {
+                  await sendInterests()
+                  navigate('/home')
+                }}
                 style={{
                   width: '254px',
                   height: '40px',
@@ -266,4 +274,4 @@ const IntrestsPage = () => {
 
 }
 
-export default IntrestsPage;
+export default InterestsPage;
