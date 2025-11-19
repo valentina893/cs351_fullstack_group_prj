@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   let debounceTimer = null;
 
@@ -61,6 +63,16 @@ const SearchPage = () => {
     }
   };
 
+  const backButton = {
+    width: "120px",
+    height: "50px",
+    fontSize: "16px",
+    borderRadius: "100px",
+    border: "1px solid #ccc",
+    backgroundColor: "#ffffff",
+    cursor: "pointer",
+  }
+
   return (
         <div
           style={{
@@ -68,7 +80,6 @@ const SearchPage = () => {
             backgroundColor: "#282c34",
             display: "flex",
             justifyContent: "center",
-            paddingTop: "40px",
             color: "white",
             overflowX: "hidden",   // prevents dropdown from leaking out horizontally
           }}
@@ -78,14 +89,25 @@ const SearchPage = () => {
               width: "98%",       // was "600px"
               //maxWidth: "800px",  // wider desktop screen
               backgroundColor: "#081317",
-              padding: "25px",
+              padding: "20px",
               borderRadius: "8px",
               boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
               position: "relative",  // ensures dropdown stays inside this container
             }}
           >
+
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+
+              <h2 style={{ marginBottom: "20px" }}>Search</h2>
+
+              <button
+                style={backButton}
+                onClick={() => navigate('/')}
+              > Back </button>
+              
+            </div>
       
-        <h2 style={{ marginBottom: "20px" }}>Search</h2>
+        
 
         {/* Search Bar */}
         <div style={{ position: "relative", width: "100%" }}>
