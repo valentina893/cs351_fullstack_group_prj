@@ -15,7 +15,10 @@ def connect_db():
     return psycopg2.connect(
         host="localhost",
         database="postgres",
+        username="postgres",
+        password="pencil#123",
         port=5432
+
     )
 
 def create_tables():

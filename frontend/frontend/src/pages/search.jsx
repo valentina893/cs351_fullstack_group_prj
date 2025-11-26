@@ -106,8 +106,6 @@ const SearchPage = () => {
               > Back </button>
               
             </div>
-      
-        
 
         {/* Search Bar */}
         <div style={{ position: "relative", width: "100%" }}>
