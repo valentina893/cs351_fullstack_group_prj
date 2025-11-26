@@ -9,6 +9,9 @@ Main backend script for application.
 
 Code written by Valentina RS
 """
+from flask_cors import CORS
+from flask_cors import cross_origin
+
 
 from flask import (
     Flask, request, jsonify, session
@@ -27,7 +30,7 @@ from database import (
 # -----------------------
 import json
 # from ddgs import DDGS
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 
 
 # ---------------------------------------
@@ -50,6 +53,29 @@ def ddg_general_search(query, max_results=5):
 # ---------------------------------------
 app = Flask(__name__)
 app.secret_key = "your-secret-key"  # change for production
+# CORS(app, origins=["http://localhost:3000"], supports_credentials=True)
+CORS(
+    app,
+    resources={r"/*": {"origins": "http://localhost:3000"}},
+    supports_credentials=True,
+    allow_headers=["Content-Type", "Authorization"],
+    expose_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "OPTIONS"]
+)
+
+
+
+
+
+app.config.update(
+    SESSION_COOKIE_SAMESITE=None,  # allow cross-site
+    SESSION_COOKIE_SECURE=False,   # HTTP localhost
+    SESSION_COOKIE_HTTPONLY=True
+    
+)
+
+
+
 
 # Create tables on startup
 create_tables()
@@ -87,13 +113,16 @@ def register():
     data = request.json
     username = data.get("username")
     password = data.get("password")
-
+    
     if not username or not password:
         return jsonify({"error": "Missing username or password"}), 400
 
     user_id = add_user(username, password)
     if user_id is None:
         return jsonify({"error": "User could not be created"}), 400
+    
+    session["user_id"] = user_id
+    session["username"] = username
 
     return jsonify({"message": "User created", "user_id": user_id})
 
@@ -133,9 +162,11 @@ def logout():
 # ---------------------------------------
 @app.post("/add_interests")
 def add_user_interests():
+    print("DEBUG: POST /add_interests hit!")
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
 
+    print("DEBUG: POST /add_interests hit!")
     data = request.json
     interests = data.get("interests")
 
@@ -153,6 +184,9 @@ def add_user_interests():
 # ---------------------------------------
 @app.get("/interests")
 def get_user_interests_route():
+    print("DEBUG: GET /interests hit!")
+    print("Raw cookie:", request.cookies.get("session"))
+    print("Session data: ", dict(session))
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
 
@@ -161,20 +195,29 @@ def get_user_interests_route():
     return jsonify({
         "username": session["username"],
         "interests": interests
-    })
+    }), 200
 
 
 # ---------------------------------------
 # DUCKDUCKGO SEARCH ROUTE
 # ---------------------------------------
+# ---------------------------------------
+# DUCKDUCKGO SEARCH ROUTE (PUBLIC)
+# ---------------------------------------
 @app.get("/search")
 def search():
     """
-    Example:
-    /search?query=python&max_results=3
+    Public search endpoint.
+    Example: /search?query=python&max_results=3
+    Does NOT require login or cookies.
     """
-    query = request.args.get("query")
-    max_results = request.args.get("max_results", default=5, type=int)
+    query = request.args.get('query')
+    max_results = request.args.get('max_results', 5)
+
+    try:
+        max_results = int(max_results)
+    except ValueError:
+        return jsonify({"error": "max_results must be an integer"}), 400
 
     if not query:
         return jsonify({"error": "Missing query parameter"}), 400
@@ -186,9 +229,11 @@ def search():
         "results": results
     })
 
+
 # ---------------------------------------
 # RUN APPLICATION
 # ---------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
+    
 
