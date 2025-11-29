@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom';
+import LoginPage from "./login";
 
 const HomePage = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -88,6 +89,25 @@ const HomePage = () => {
     };
   }, [showInfo]);
 
+  const logout = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/logout", {
+        method: "POST",
+        credentials: "include"
+      });
+
+      const data = await response.json();
+      console.log("Logout: ", data);
+
+      localStorage.removeItem("user_id");
+      sessionStorage.clear();
+
+      navigate("/login");
+    } catch (err) {
+      console.error("Error logging out:", err);
+    }
+  }
+
   const eventButton = {
     padding: "35px",
     fontSize: "16px",
@@ -137,10 +157,18 @@ const HomePage = () => {
 
           <h2 style={{ color: "white", marginBottom: "20px" }}>Hello User</h2>
 
-          <button
-            style={searchButton}
-            onClick={() => navigate('/search')}
-          >Search</button>
+          <div style={{display: "flex", gap: "10px", justifyContent: "space-between"}}>
+            <button
+              style={searchButton}
+              onClick={logout}
+            >Log Out</button>
+
+            <button
+              style={searchButton}
+              onClick={() => navigate('/search')}
+            >Search</button>
+
+          </div>
 
         </div>
 

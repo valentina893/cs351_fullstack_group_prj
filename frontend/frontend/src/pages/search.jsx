@@ -102,7 +102,7 @@ const SearchPage = () => {
 
               <button
                 style={backButton}
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/home')}
               > Back </button>
               
             </div>
