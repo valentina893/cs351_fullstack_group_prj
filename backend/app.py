@@ -9,10 +9,14 @@ Main backend script for application.
 
 Code written by Valentina RS
 """
+from flask_cors import CORS
+from flask_cors import cross_origin
 
 from flask import (
     Flask, request, jsonify, session
 )
+
+from trie import Trie
 
 # -----------------------
 # DATABASE FUNCTIONS
@@ -27,7 +31,7 @@ from database import (
 # -----------------------
 import json
 # from ddgs import DDGS
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 
 
 # ---------------------------------------
@@ -50,10 +54,80 @@ def ddg_general_search(query, max_results=5):
 # ---------------------------------------
 app = Flask(__name__)
 app.secret_key = "your-secret-key"  # change for production
+# CORS(app, origins=["http://localhost:3000"], supports_credentials=True)
+CORS(
+    app,
+    resources={r"/*": {"origins": "http://localhost:3000"}},
+    supports_credentials=True,
+    allow_headers=["Content-Type", "Authorization"],
+    expose_headers=["Content-Type", "Authorization"],
+    methods=["GET", "POST", "OPTIONS"]
+)
+
+
+
+
+
+app.config.update(
+    SESSION_COOKIE_SAMESITE=None,  # allow cross-site
+    SESSION_COOKIE_SECURE=False,   # HTTP localhost
+    SESSION_COOKIE_HTTPONLY=True
+    
+)
+
+
+
 
 # Create tables on startup
 create_tables()
 
+
+# setup interests
+interest_trie = Trie()
+
+all_interests = [
+    "Basketball",
+    "Football",
+    "Soccer",
+    "Tennis",
+    "Baseball",
+    "Hockey",
+
+    "Fast Food",
+    "Chinese Food",
+    "Sandwich Food",
+    "Indian Food",
+    "Italian Food",
+    "Ice Cream Food",
+    "MexicanFood",
+
+    "Software Development",
+    "Software Engineering",
+    "Cybersecurity",
+    "Hackathons",
+    "Interview Practice",
+    "Data Science",
+    "Coding",
+
+    "Recreation",
+    "Counseling",
+    "Food Assistance",
+
+    "Concerts",
+    "Jazz",
+    "Symphonic Band",
+    "Orchestra",
+    "Choir",
+    "Percussion",
+
+    "History",
+    "Exhibitions",
+    "Art Fests",
+    "Galleries"
+]
+
+for word in all_interests:
+    interest_trie.insert(word)
 
 # ---------------------------------------
 # DB HELPER: GET USER BY USERNAME
@@ -87,15 +161,22 @@ def register():
     data = request.json
     username = data.get("username")
     password = data.get("password")
-
+    
     if not username or not password:
         return jsonify({"error": "Missing username or password"}), 400
+
+    user = get_user(username)
+    if user:
+        return jsonify({"error": "Username already exist."}), 400
 
     user_id = add_user(username, password)
     if user_id is None:
         return jsonify({"error": "User could not be created"}), 400
+    
+    session["user_id"] = user_id
+    session["username"] = username
 
-    return jsonify({"message": "User created", "user_id": user_id})
+    return jsonify({"message": "User created", "user_id": user_id, "username": username})
 
 
 # ---------------------------------------
@@ -122,10 +203,10 @@ def login():
 # ---------------------------------------
 # LOGOUT
 # ---------------------------------------
-@app.get("/logout")
+@app.post("/logout")
 def logout():
     session.clear()
-    return jsonify({"message": "Logged out"})
+    return jsonify({"message": "Logged out"}), 200
 
 
 # ---------------------------------------
@@ -133,9 +214,14 @@ def logout():
 # ---------------------------------------
 @app.post("/add_interests")
 def add_user_interests():
+    print("DEBUG: Cookies sent by client:", request.cookies)
+    print("DEBUG: Current session:", dict(session))
+    print("DEBUG: POST /add_interests hit!")
+    # print(user_id)
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
 
+    # print("DEBUG: POST /add_interests hit!")
     data = request.json
     interests = data.get("interests")
 
@@ -153,28 +239,49 @@ def add_user_interests():
 # ---------------------------------------
 @app.get("/interests")
 def get_user_interests_route():
+    print("DEBUG: GET /interests hit!")
+    print("Raw cookie:", request.cookies.get("session"))
+    print("Session data: ", dict(session))
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
 
-    interests = get_user_interests(session["user_id"])
+    # interests = get_user_interests(session["user_id"])
+    interests = interest_trie.starts_with("")
 
-    return jsonify({
-        "username": session["username"],
-        "interests": interests
-    })
+    # return jsonify({
+    #     "username": session["username"],
+    #     "interests": interests
+    # }), 200
+
+    return jsonify(interests)
 
 
 # ---------------------------------------
 # DUCKDUCKGO SEARCH ROUTE
 # ---------------------------------------
+# ---------------------------------------
+# DUCKDUCKGO SEARCH ROUTE (PUBLIC)
+# ---------------------------------------
 @app.get("/search")
 def search():
     """
-    Example:
-    /search?query=python&max_results=3
+    Public search endpoint.
+    Example: /search?query=python&max_results=3
+    Does NOT require login or cookies.
     """
-    query = request.args.get("query")
-    max_results = request.args.get("max_results", default=5, type=int)
+
+    interests = get_user_interests(session["user_id"])
+    # interestTrie = Trie():
+    # for word in interests:
+    #     trie.insert(word)
+
+    query = request.args.get('query')
+    max_results = request.args.get('max_results', 5)
+
+    try:
+        max_results = int(max_results)
+    except ValueError:
+        return jsonify({"error": "max_results must be an integer"}), 400
 
     if not query:
         return jsonify({"error": "Missing query parameter"}), 400
@@ -185,6 +292,7 @@ def search():
         "query": query,
         "results": results
     })
+
 
 # ---------------------------------------
 # RUN APPLICATION
