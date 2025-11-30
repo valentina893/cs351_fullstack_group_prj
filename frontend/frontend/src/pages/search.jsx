@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
 
 const SearchPage = () => {
@@ -50,9 +50,30 @@ const SearchPage = () => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    const handleClick = () => {
+      setSuggestions([]);
+    }
+
+    document.addEventListener("click", handleClick);
+
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   const handleSelect = (value) => {
-    setQuery(value);
     setSuggestions([]);
+
+    setQuery((prev) => {
+
+      const words = prev.trim().split(/\s+/);
+      words[words.length - 1] = value;
+
+      const newQuery = words.join(" ");
+      runSearch(newQuery);
+      return newQuery
+
+    });
+    
     runSearch(value);
   };
 
