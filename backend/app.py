@@ -129,6 +129,13 @@ all_interests = [
 for word in all_interests:
     interest_trie.insert(word)
 
+# setup dictionary
+dictionaryTrie = Trie()
+with open("dictionary.txt", "r") as file:
+    for line in file:
+        word = line.strip()
+        dictionaryTrie.insert(word.lower())
+
 # ---------------------------------------
 # DB HELPER: GET USER BY USERNAME
 # ---------------------------------------
@@ -255,6 +262,29 @@ def get_user_interests_route():
 
     return jsonify(interests)
 
+# ---------------------------------------
+# GET SEARCH TERMS
+# ---------------------------------------
+@app.route("/autocomplete", methods = ["GET"])
+def autocomplete():
+
+    query = request.args.get("query")
+    print("User typed:", query)
+
+    term = query.strip().split()[-1]
+    print("Current term:", term)
+
+    posWords = dictionaryTrie.starts_with(term)
+
+    return {"results": posWords}
+
+    # data = request.json
+    # termSoFar = data.get("term")
+    # print("Current term: ", interests)
+
+    posTerms = dictionaryTrie.starts_with(query)
+    # return jsonify({"message": "Got term", "posTerms": termSoFar})
+    
 
 # ---------------------------------------
 # DUCKDUCKGO SEARCH ROUTE
@@ -270,7 +300,7 @@ def search():
     Does NOT require login or cookies.
     """
 
-    interests = get_user_interests(session["user_id"])
+    # interests = get_user_interests(session["user_id"])
     # interestTrie = Trie():
     # for word in interests:
     #     trie.insert(word)
