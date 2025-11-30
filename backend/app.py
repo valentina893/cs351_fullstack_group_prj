@@ -12,6 +12,9 @@ Code written by Valentina RS
 from flask_cors import CORS
 from flask_cors import cross_origin
 
+from flask_cors import CORS
+from flask_cors import cross_origin
+
 from flask import (
     Flask, request, jsonify, session
 )
@@ -292,6 +295,9 @@ def autocomplete():
 # ---------------------------------------
 # DUCKDUCKGO SEARCH ROUTE (PUBLIC)
 # ---------------------------------------
+# ---------------------------------------
+# DUCKDUCKGO SEARCH ROUTE (PUBLIC)
+# ---------------------------------------
 @app.get("/search")
 def search():
     """
@@ -329,4 +335,5 @@ def search():
 # ---------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
+    
 
