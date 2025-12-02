@@ -15,6 +15,9 @@ def connect_db():
     return psycopg2.connect(
         host="localhost",
         database="postgres",
+# user and password is to be replaced by users postgres username and password
+        user="postgres",
+        password="pencil#123",
         port=5432
     )
 
