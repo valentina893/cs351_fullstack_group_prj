@@ -12,10 +12,11 @@ Code written by Valentina RS
 from flask_cors import CORS
 from flask_cors import cross_origin
 
-
 from flask import (
     Flask, request, jsonify, session
 )
+
+from trie import Trie
 
 # -----------------------
 # DATABASE FUNCTIONS
@@ -53,7 +54,7 @@ def ddg_general_search(query, max_results=5):
 # ---------------------------------------
 app = Flask(__name__)
 app.secret_key = "your-secret-key"  # change for production
-# CORS(app, origins=["http://localhost:3000"], supports_credentials=True)
+
 CORS(
     app,
     resources={r"/*": {"origins": "http://localhost:3000"}},
@@ -63,10 +64,6 @@ CORS(
     methods=["GET", "POST", "OPTIONS"]
 )
 
-
-
-
-
 app.config.update(
     SESSION_COOKIE_SAMESITE=None,  # allow cross-site
     SESSION_COOKIE_SECURE=False,   # HTTP localhost
@@ -74,12 +71,15 @@ app.config.update(
     
 )
 
-
-
-
 # Create tables on startup
 create_tables()
 
+# setup dictionary
+dictionaryTrie = Trie()
+with open("dictionary.txt", "r") as file:
+    for line in file:
+        word = line.strip()
+        dictionaryTrie.insert(word.lower())
 
 # ---------------------------------------
 # DB HELPER: GET USER BY USERNAME
@@ -113,18 +113,24 @@ def register():
     data = request.json
     username = data.get("username")
     password = data.get("password")
+
+    trueUser = username.rstrip()
     
-    if not username or not password:
+    if not trueUser or not password:
         return jsonify({"error": "Missing username or password"}), 400
 
-    user_id = add_user(username, password)
+    user = get_user(trueUser)
+    if user:
+        return jsonify({"error": "Username already exist."}), 400
+
+    user_id = add_user(trueUser, password)
     if user_id is None:
         return jsonify({"error": "User could not be created"}), 400
     
     session["user_id"] = user_id
-    session["username"] = username
+    session["username"] = trueUser
 
-    return jsonify({"message": "User created", "user_id": user_id})
+    return jsonify({"message": "User created", "user_id": user_id, "username": trueUser})
 
 
 # ---------------------------------------
@@ -151,10 +157,10 @@ def login():
 # ---------------------------------------
 # LOGOUT
 # ---------------------------------------
-@app.get("/logout")
+@app.post("/logout")
 def logout():
     session.clear()
-    return jsonify({"message": "Logged out"})
+    return jsonify({"message": "Logged out"}), 200
 
 
 # ---------------------------------------
@@ -162,11 +168,13 @@ def logout():
 # ---------------------------------------
 @app.post("/add_interests")
 def add_user_interests():
+    print("DEBUG: Cookies sent by client:", request.cookies)
+    print("DEBUG: Current session:", dict(session))
     print("DEBUG: POST /add_interests hit!")
+    # print(user_id)
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
 
-    print("DEBUG: POST /add_interests hit!")
     data = request.json
     interests = data.get("interests")
 
@@ -177,7 +185,6 @@ def add_user_interests():
     print("Received interests: ", interests)
 
     return jsonify({"message": "Interests added"})
-
 
 # ---------------------------------------
 # GET INTERESTS
@@ -190,13 +197,29 @@ def get_user_interests_route():
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
 
+ 
     interests = get_user_interests(session["user_id"])
+    print("Check interests: ", interests)
 
-    return jsonify({
-        "username": session["username"],
-        "interests": interests
-    }), 200
+    return jsonify(interests)
 
+# ---------------------------------------
+# GET SEARCH TERMS
+# ---------------------------------------
+@app.route("/autocomplete", methods = ["GET"])
+def autocomplete():
+
+    query = request.args.get("query")
+    print("User typed:", query)
+
+    term = query.strip().split()[-1]
+    print("Current term:", term)
+
+    posWords = dictionaryTrie.starts_with(term)
+    return {"results": posWords}
+
+    posTerms = dictionaryTrie.starts_with(query)
+    
 
 # ---------------------------------------
 # DUCKDUCKGO SEARCH ROUTE
@@ -211,18 +234,21 @@ def search():
     Example: /search?query=python&max_results=3
     Does NOT require login or cookies.
     """
+
     query = request.args.get('query')
+    filterQuery = f"(uic) {query}" 
     max_results = request.args.get('max_results', 5)
+
 
     try:
         max_results = int(max_results)
     except ValueError:
         return jsonify({"error": "max_results must be an integer"}), 400
 
-    if not query:
+    if not filterQuery:
         return jsonify({"error": "Missing query parameter"}), 400
 
-    results = ddg_general_search(query, max_results)
+    results = ddg_general_search(filterQuery, max_results)
 
     return jsonify({
         "query": query,
