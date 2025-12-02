@@ -4,8 +4,6 @@ import {useNavigate} from 'react-router-dom';
 const InterestsPage = () => {
     const navigate = useNavigate();
 
-    // const [error, setError] = useState("");
-
     const sportInterests = [
       "Basketball",
       "Football",
@@ -65,15 +63,6 @@ const InterestsPage = () => {
       "Art": artInterests,
     };
 
-    // const interests = [
-    //   "Sports",
-    //   "Food",
-    //   "Computer Science",
-    //   "Wellness/ Health",
-    //   "Music",
-    //   "Art",
-    // ];
-
     const [options, setOptions] = useState([])
     // const [interests, setInterests] = useState([])
 
@@ -107,22 +96,16 @@ const InterestsPage = () => {
       const updated = new Set(selected);
       if(updated.has(interest)) {
         updated.delete(interest);
-        // chosenOptions.remove(interest)
 
       }
       else{
         updated.add(interest);
-        // chosenOptions.add(interest)
       }
       setSelected(updated);
     }
 
     const sendInterests = async () =>{
       const selectedInterests = Array.from(selected)
-
-      // const query = new URLSearchParams({
-      //   selected: selectedInterests.join(",")
-      // })
 
       try{
         const res = await fetch("http://localhost:5000/add_interests", {
@@ -138,7 +121,7 @@ const InterestsPage = () => {
 
         if (!res.ok) {
 
-          setError(/*data.error || */"Sending Error");
+          setError("Sending Error");
           return;
         }
 
@@ -248,7 +231,6 @@ const InterestsPage = () => {
           <button
             onClick={async () => {
               await sendInterests()
-              // navigate('/home')
             }}
             style={{
               width: '254px',
