@@ -65,15 +65,6 @@ const InterestsPage = () => {
       "Art": artInterests,
     };
 
-    // const interests = [
-    //   "Sports",
-    //   "Food",
-    //   "Computer Science",
-    //   "Wellness/ Health",
-    //   "Music",
-    //   "Art",
-    // ];
-
     const [options, setOptions] = useState([])
     // const [interests, setInterests] = useState([])
 
@@ -99,78 +90,7 @@ const InterestsPage = () => {
 
     }, [])
 
-    const [list, chosenOptions] = useState([])
     const[error, setError] = useState("")
-
-    // const [allSelected, setSelected] = useState([]);
-
-    // function handleMultipleOptions(subInterests, e){
-    //   const selectedFromCategory = Array.from(
-    //     e.target.selectedOptions,
-    //     (o) => o.value
-    //   )
-
-    //   setSelected(prev => {
-    //     const removeFromThisCategory = prev.filter(
-    //       (item) => !subInterests.includes(item)
-    //     )
-
-    //     return [...removeFromThisCategory, ...selectedFromCategory]
-    //   })
-    // }
-
-    // return(
-    //   <div style={{
-    //     // width: "50v",
-    //     height: "100vh",
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     backgroundColor: '#282c34',
-    //   }}>
-    //     <label>Select from Catagories</label>
-
-    //     <div className="scroll-box">
-    //       {Object.entries(interests).map(([key, subInterests], index) => (
-    //         <div key={index} style={{marginBottom: "12px"}}>
-    //           <label>{key}</label>
-
-    //           <select
-    //             multiple
-    //             onChange={(e) => handleMultipleOptions(subInterests, e)}
-    //             style={{width: "100%", marginTop: "5px"}}
-    //           >
-    //             {subInterests.map((subInt, i) => (
-    //               <option key={i} value={subInt}>
-    //                 {subInt}
-    //               </option>
-    //             ))}
-    //           </select>
-    //         </div>
-    //       ))}
-    //     </div>
-
-    //     <h3>All selected:</h3>
-    //     <pre>{JSON.stringify(allSelected, null, 2)}</pre>
-
-    //     <button
-    //       onClick={() => navigate('/home')}
-    //       style={{
-    //         width: '254px',
-    //         height: '40px',
-    //         backgroundColor: '#ffffffff',
-    //         color: '#081317',
-    //         border: 'none',
-    //         borderRadius: '4px',
-    //         cursor: 'pointer',
-    //         fontSize: '16px',
-    //       }}
-    //     >
-    //       Confirm
-    //     </button>
-    //   </div>
-    // )
-
     const [selected, setSelected] = useState(new Set());
 
 

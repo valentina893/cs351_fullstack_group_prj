@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom';
-import LoginPage from "./login";
 
 const HomePage = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -9,24 +8,6 @@ const HomePage = () => {
   const [interests, setInterests] = useState([]);
   const [eventsByInterest, setEventsByInterest] = useState({});
   const navigate = useNavigate();
-
-  // // Fetch user interests and events
-  // useEffect(() => {
-  //   const loadData = async () => {
-  //     try {
-  //       const res = await fetch("http://localhost:5000/interests", { credentials: "include" });
-  //       if (!res.ok) throw new Error("Not logged in");
-  //       const data = await res.json();
-  
-  //       setInterests(data.interests || []);
-  //       await fetchEvents(data.interests || []);
-  //     } catch (err) {
-  //       console.error("Failed to fetch interests:", err);
-  //     }
-  //   };
-  //   loadData();
-  // }, []);
-  
 
   // Search events for a single interest
   const searchEvents = async (interest) => {
@@ -67,8 +48,6 @@ const HomePage = () => {
       }
     }
     fetchInterests()
-
-    // fetchEvents()
   }, [])
 
   useEffect(() => {
