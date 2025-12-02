@@ -188,28 +188,6 @@ def add_user_interests():
 
     return jsonify({"message": "Interests added"})
 
-
-# # ---------------------------------------
-# # GET INTERESTS
-# # ---------------------------------------
-# @app.get("/interests")
-# def get_user_interests_route():
-#     print("DEBUG: GET /interests hit!")
-#     print("Raw cookie:", request.cookies.get("session"))
-#     print("Session data: ", dict(session))
-#     if "user_id" not in session:
-#         return jsonify({"error": "Not logged in"}), 401
-
-#     # interests = get_user_interests(session["user_id"])
-#     interests = interest_trie.starts_with("")
-
-#     # return jsonify({
-#     #     "username": session["username"],
-#     #     "interests": interests
-#     # }), 200
-
-#     return jsonify(interests)
-
 # ---------------------------------------
 # GET INTERESTS
 # ---------------------------------------
