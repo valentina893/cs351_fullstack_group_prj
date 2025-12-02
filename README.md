@@ -1,136 +1,54 @@
-# Logistics  
+Before running the project, make sure you have the following installed:
 
-**Q1:** At what time in the week would your group be available to meet online?  
-we would be availble on thursdays after 4 pm 
-**Example:**  
-*We are available to meet online on weekends from 12pm-8pm (12-2pm Saturday + Sunday), as well as from 4pm-6pm on Fridays.*  
-*Our weekly meeting will be Thursday 11am-12pm.*  
+Backend Requirements
 
----
+Python 3.9+
 
-# Timeline: Weekly Meeting Goals  
+pip (Python package manager)
 
-**Q2:** What is your goals that your group want to achieve in each weekly meeting?  
-We would like each meeting to have some portion to go over and reivew the code we currently have and what needs to be done in order to stay on track. During this week we are planning to finalize the idea, the week of 10/06 we plan to figure out the data structures and have the plan ironed out, meaning we would like to know exactly what our app is going to do, maybe even come up with UI layout using figma. Then 10/20 we should have made some progress and have some componenets functionality completed for example maybe a log in.  10/ 27 work heavily on front end and make sure everyhting is working properly as expected and connect backend to frontend. 11/01 we plan on going through and dounle checking everything works and fixing any minor bugs. Then the following weeks we plan on just fixing the UI and getting it to where we want it to be and seeking help if nessecary. 
+PostgreSQL installed locally
 
-**Example:**  
-*Prior to 3/13: Weekly Meeting we will plan out some preliminary info/idea for the project itself ahead of the scheduled meeting like which data source/API and data structures we will use in our backend. We will browse [the given list of public APIs for inspiration](https://github.com/public-apis/public-apis).*  
+Must be running with no password on the default user
 
-*During week of 3/25: Work on the project rough draft itself to make a functioning project with data input, data structure usage, and processing into output on the frontend.*  
+Default port: 5432
 
-*Prior to 4/17: Meet together weekly to target project weakpoints/bugs and possibly visit office hours to get guidance if the progress feels weak.*  
+Frontend Requirements
 
----
+Node.js (v16 or newer recommended)
 
-# Communication  
+npm (comes with Node.js)
 
-**Q3a:** We will be using discord to communicate about group project and keep each other updated. 
-**Q3b:** dalejpj - Dale, nathan083474 - Nathan, Legend- Musa, valentina- valentina
-**Q3c:** Our expected reponse time is 10 hours. 
+We recomend downloading the postgres app and then starting the server locally since it will default to port 5432 and no password. download paostgress app:https://postgresapp.com/
 
----
+Set up backend:
 
-# Norms  
+cd backend- move into backend directory 
 
-**Q4a:** How will your group handle situations when there is conflict in your group?  
-We plan on just have a mojority vote to resolve conflicts in terms of which direction to take.
+Create virtual envoirnment 
 
-**Q4b:** How will your group handle situations when a member is not contributing enough?  
-We will message them and tell them directly and tell them which areas they need to contribute so that everything is fair. 
+python -m venv venv
+source venv/bin/activate (Mac)
+venv\Scripts\activate (Windows)
 
-**Example:**  
-*If there is a disagreement on direction, we will resolve it with a unanimous vote.*  
-*If team members do not pull their weight, the team will politely remind them of their duties.*  
-*If they continue to not pull their weight, then they will get another warning and a chance to start being more productive.*  
+INstall the dependecnies 
+pip install flask psycopg-binary2 duckduckgo-search
 
----
-
-# Roles  
-
-**Q5:** How will your group divide your role in the Group Project? 
-
-Nathan - Backend
-Dale - Backend
-Musa-Frontend
-Valentina - Frontend
+then run the backend 
+Flask run
 
 
----
+Then open new terminal 
+then move to fronend 
+cd frontend 
+there will be another folder called frontend so move into that directory
+cd frontend
 
-# Tech Stacks
+install dependencies :
+npm install
 
-**Q6:** Which tech stacks will your group use? (Django + React or Flask + React)
-We are planning to use react + flask
-
----
-# Full Stack Group Project Track  
----
-
-# Track 1: Tackling Generative AI Consequences
-**Problem 1:** 
-There is a lot of content which is out there and we struggle to disinguish them so we think people should have more knowledge about how Ai generates content and how to check if certain content is AI written
-
-**Solution 1:** 
-We propose to build a sort of game to help educate people in how to detect AI generated text in websites or papers. The game would have people look at different texts or pictures of websites and try to detect which is AI generated. We will inlude tips in between rounds.
-
----
-
-# Track 2: Technology for Public Goods 
-
-**Problem 2:**
-Individuals struggle to adopt sustainable behaviors daily. People may be unaware of how simple things they do each day can be harmful for the planet like using too much plastic. Some people may want to gain eco-friendly habits but struggle with integrating those habits into their daily life.
-
-**Solution 2:** 
-We propose to build a app where the app that nudges users with small, personalized sustainability tips and tracks progress. The app will be targeted mostly to students at UIC. The app can give challenges or trackers that can help students gain eco-friendly habits. Ex. A tracker to keep track on how many plastic bottles someone uses in a week. Or a tracker for how much water you drink with reusable water bottles.
-
-**Problem 3:** 
-There are many community resources out their for local residents, but finding them in a certain area can be difficult.
-
-**Solution 3:**
-We can create an app that given a location, will give a list of nearby community resources like food pantries. The app will also include details of the resources such as an address or links to websites.
-
-# Track 3: Creative Coding and Cultural Expression
-
-**Idea - Story - Inspiration 4:**
-
-**Implementation 4:**
-
-**Idea - Story - Inspiration 5:**
-
-**Implementation 5:**
+then start frontend 
+npm start
 
 
-# Idea Finalization
 
-**From 5 project ideas you have above, please choose one of the project that you are going with for the rest of the semester. Explain why you are going with that project**
-We are planning to do the behavioral app since it will benefit the person and the community, since the person will have lower cost, and the community will save resources as well.
 
-# Extra Credit (Only do this if you are done with Idea Finalization)
-
-## Database Design
-
-**Q1: What database are you using for your project (SQLite, PostgreSQL, noSQL, MongoDB,...), and why do you choose it?**
-
-**Q2: How will database be helpful to your project? How will you design your database to support your application features?**
-
-## Third-Party API Integration
-
-**Q3: Which third-party API(s) will you integrate into your project? What data will you pull from the API(s), and how will you use it in your application?**
-we might use mailboxlayer to confirm the email is active
-
-**Q4: Does your API key has limitations such as rate limits or downtime? How are you going to deal with that?**
-500 requests per month
-
-## Authentication and Security
-
-**Q5: What authentication method will you use (e.g., username/password, OAuth, JWT)?**
-We are planning to use username and password and maybe even a Oauth.
-
-**Q6: How will you store and protect sensitive user data (e.g., passwords, tokens)?**
-
-## Deployment
-
-**Q7: Where will you deploy your project (e.g., Heroku, AWS, Render)? How will you manage environment variables and secrets during deployment?**
-I think we will try to use AWS.
-
-**Q8: How will you ensure your deployment is reliable and easy to update?**
