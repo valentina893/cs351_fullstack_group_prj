@@ -48,8 +48,6 @@ const HomePage = () => {
       }
     }
     fetchInterests()
-
-    // fetchEvents()
   }, [])
 
   useEffect(() => {
