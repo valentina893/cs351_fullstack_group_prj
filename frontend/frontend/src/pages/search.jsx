@@ -162,6 +162,8 @@ const SearchPage = () => {
                 borderRadius: "6px",
                 overflow: "hidden",
                 border: "1px solid #333",
+                zIndex: 9999,
+                
               }}
             >
               {suggestions.map((s, index) => (

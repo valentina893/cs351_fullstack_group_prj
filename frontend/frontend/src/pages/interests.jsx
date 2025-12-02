@@ -288,7 +288,7 @@ const InterestsPage = () => {
                       key={interest}
                       onClick={() => handleClick(interest)}
                       style={{
-                        width: "85px",
+                        width: "115px",
                         height: "60px",
                         backgroundColor: selected.has(interest) ? "#1e1e1e" : "#ffffff",
                         color: selected.has(interest) ? "#ffffff" : "#081317",
