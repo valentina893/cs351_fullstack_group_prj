@@ -57,7 +57,7 @@ def ddg_general_search(query, max_results=5):
 # ---------------------------------------
 app = Flask(__name__)
 app.secret_key = "your-secret-key"  # change for production
-# CORS(app, origins=["http://localhost:3000"], supports_credentials=True)
+
 CORS(
     app,
     resources={r"/*": {"origins": "http://localhost:3000"}},
@@ -67,10 +67,6 @@ CORS(
     methods=["GET", "POST", "OPTIONS"]
 )
 
-
-
-
-
 app.config.update(
     SESSION_COOKIE_SAMESITE=None,  # allow cross-site
     SESSION_COOKIE_SECURE=False,   # HTTP localhost
@@ -78,59 +74,8 @@ app.config.update(
     
 )
 
-
-
-
 # Create tables on startup
 create_tables()
-
-
-# setup interests
-interest_trie = Trie()
-
-all_interests = [
-    "Basketball",
-    "Football",
-    "Soccer",
-    "Tennis",
-    "Baseball",
-    "Hockey",
-
-    "Fast Food",
-    "Chinese Food",
-    "Sandwich Food",
-    "Indian Food",
-    "Italian Food",
-    "Ice Cream Food",
-    "MexicanFood",
-
-    "Software Development",
-    "Software Engineering",
-    "Cybersecurity",
-    "Hackathons",
-    "Interview Practice",
-    "Data Science",
-    "Coding",
-
-    "Recreation",
-    "Counseling",
-    "Food Assistance",
-
-    "Concerts",
-    "Jazz",
-    "Symphonic Band",
-    "Orchestra",
-    "Choir",
-    "Percussion",
-
-    "History",
-    "Exhibitions",
-    "Art Fests",
-    "Galleries"
-]
-
-for word in all_interests:
-    interest_trie.insert(word)
 
 # setup dictionary
 dictionaryTrie = Trie()
@@ -244,6 +189,27 @@ def add_user_interests():
     return jsonify({"message": "Interests added"})
 
 
+# # ---------------------------------------
+# # GET INTERESTS
+# # ---------------------------------------
+# @app.get("/interests")
+# def get_user_interests_route():
+#     print("DEBUG: GET /interests hit!")
+#     print("Raw cookie:", request.cookies.get("session"))
+#     print("Session data: ", dict(session))
+#     if "user_id" not in session:
+#         return jsonify({"error": "Not logged in"}), 401
+
+#     # interests = get_user_interests(session["user_id"])
+#     interests = interest_trie.starts_with("")
+
+#     # return jsonify({
+#     #     "username": session["username"],
+#     #     "interests": interests
+#     # }), 200
+
+#     return jsonify(interests)
+
 # ---------------------------------------
 # GET INTERESTS
 # ---------------------------------------
@@ -255,13 +221,9 @@ def get_user_interests_route():
     if "user_id" not in session:
         return jsonify({"error": "Not logged in"}), 401
 
-    # interests = get_user_interests(session["user_id"])
-    interests = interest_trie.starts_with("")
-
-    # return jsonify({
-    #     "username": session["username"],
-    #     "interests": interests
-    # }), 200
+ 
+    interests = get_user_interests(session["user_id"])
+    print("Check interests: ", interests)
 
     return jsonify(interests)
 
@@ -278,15 +240,9 @@ def autocomplete():
     print("Current term:", term)
 
     posWords = dictionaryTrie.starts_with(term)
-
     return {"results": posWords}
 
-    # data = request.json
-    # termSoFar = data.get("term")
-    # print("Current term: ", interests)
-
     posTerms = dictionaryTrie.starts_with(query)
-    # return jsonify({"message": "Got term", "posTerms": termSoFar})
     
 
 # ---------------------------------------
@@ -306,23 +262,20 @@ def search():
     Does NOT require login or cookies.
     """
 
-    # interests = get_user_interests(session["user_id"])
-    # interestTrie = Trie():
-    # for word in interests:
-    #     trie.insert(word)
-
     query = request.args.get('query')
+    filterQuery = f"(uic) {query}" 
     max_results = request.args.get('max_results', 5)
+
 
     try:
         max_results = int(max_results)
     except ValueError:
         return jsonify({"error": "max_results must be an integer"}), 400
 
-    if not query:
+    if not filterQuery:
         return jsonify({"error": "Missing query parameter"}), 400
 
-    results = ddg_general_search(query, max_results)
+    results = ddg_general_search(filterQuery, max_results)
 
     return jsonify({
         "query": query,

@@ -56,14 +56,14 @@ const InterestsPage = () => {
       "Galleries"
     ]
 
-    // const interests = {
-    //   "Sports": sportInterests,
-    //   "Food": foodIntersests,
-    //   "Computer Science": csInterests,
-    //   "Wellness/Health": healthInterests,
-    //   "Music": musicInterests,
-    //   "Art": artInterests,
-    // };
+    const interests = {
+      "Sports": sportInterests,
+      "Food": foodIntersests,
+      "Computer Science": csInterests,
+      "Wellness/Health": healthInterests,
+      "Music": musicInterests,
+      "Art": artInterests,
+    };
 
     // const interests = [
     //   "Sports",
@@ -75,6 +75,7 @@ const InterestsPage = () => {
     // ];
 
     const [options, setOptions] = useState([])
+    // const [interests, setInterests] = useState([])
 
     useEffect(() => {
       const fetchOptions = async() => {
@@ -258,34 +259,55 @@ const InterestsPage = () => {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateColumns: "repeat(1, 1fr)",
               gap: "10px",
               justifyItems: "center",
             }}
           >
-            {options.map((option) =>(
-              <button
-                key={option}
-                onClick={() => handleClick(option)}
-                style={{
-                  width: "85px",
-                  height: "60px",
-                  backgroundColor: selected.has(option) ? "#1e1e1e" : "#ffffff",
-                  color: selected.has(option) ? "#ffffff" : "#081317",
-                  border: "1px solid #ccc",
-                  borderRadius: "6px",
-                  cursor: "pointer",
-                  fontSize: "14px",
-                }}
-                >
-                  {option}
-                </button>
-              ))}
+            {Object.entries(interests).map(([category, interestList]) =>(
+              <div key={category}>
+                <h3 
+                  style={{
+                    marginBottom: "10px",
+                    color: "white"
+                  }}
+                > 
+                  {category} 
+                </h3>
 
-              
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: "10px",
+                    justifyItems: "center",
+                  }}
+                >
+                  {interestList.map((interest) => (
+                    <button
+                      key={interest}
+                      onClick={() => handleClick(interest)}
+                      style={{
+                        width: "85px",
+                        height: "60px",
+                        backgroundColor: selected.has(interest) ? "#1e1e1e" : "#ffffff",
+                        color: selected.has(interest) ? "#ffffff" : "#081317",
+                        border: "1px solid #ccc",
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                      }}
+                      >
+                        {interest}
+                      </button>
+                    ))}
+
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
-
+        
         <div
           style={{
             gridColumn: "1/ span 3",
@@ -316,7 +338,6 @@ const InterestsPage = () => {
       </div>
     </div>
   )
-
 }
 
 export default InterestsPage;

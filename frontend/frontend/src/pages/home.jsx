@@ -28,47 +28,54 @@ const HomePage = () => {
   // }, []);
   
 
-  // // Search events for a single interest
-  // const searchEvents = async (interest) => {
-  //   const response = await fetch(
-  //     `http://localhost:5000/search?query=${encodeURIComponent(interest)}&max_results=3`,
-  //     { credentials: "include" }
-  //   );
-  //   if (!response.ok) throw new Error("Search failed");
-  //   const data = await response.json();
-  //   return data.results; // array of events
-  // };
+  // Search events for a single interest
+  const searchEvents = async (interest) => {
+    const response = await fetch(
+      `http://localhost:5000/search?query=${encodeURIComponent(interest)}&max_results=3`,
+      { credentials: "include" }
+    );
+    if (!response.ok) throw new Error("Search failed");
+    const data = await response.json();
+    return data.results; // array of events
+  };
 
-  // // Fetch events for all interests and group by interest
-  // const fetchEvents = async (interests) => {
-  //   const groupedEvents = {};
-  //   for (const interest of interests) {
-  //     const results = await searchEvents(interest);
-  //     groupedEvents[interest] = results;
-  //   }
-  //   setEventsByInterest(groupedEvents);
-  // };
-    // Dummy data
-    useEffect(() => {
-      const dummyInterests = ["Sports", "Movies", "Music"];
-      const dummyEvents = {
-        Sports: [
-          { title: "Football Match", snippet: "Local football game.", url: "#" },
-          { title: "Basketball Tournament", snippet: "City-wide tournament.", url: "#" },
-        ],
-        Movies: [
-          { title: "Movie Night", snippet: "Screening at the park.", url: "#" },
-          { title: "Film Festival", snippet: "Annual film fest.", url: "#" },
-        ],
-        Music: [
-          { title: "Jazz Concert", snippet: "Live jazz music.", url: "#" },
-          { title: "Rock Band", snippet: "Outdoor concert.", url: "#" },
-        ],
-      };
-  
-      setInterests(dummyInterests);
-      setEventsByInterest(dummyEvents);
-    }, []);
+  // Fetch events for all interests and group by interest
+  const fetchEvents = async (interests) => {
+    const groupedEvents = {};
+    for (const interest of interests) {
+      const results = await searchEvents(interest);
+      groupedEvents[interest] = results;
+    }
+    setEventsByInterest(groupedEvents);
+  };
+
+  useEffect(() => {
+    const fetchInterests = async() => {
+      try {
+        const response = await fetch("http://localhost:5000/interests", {
+          methond: "GET",
+          credentials: "include"
+        })
+
+        const data = await response.json()
+        console.log("Backend data:", data, Array.isArray(data))
+        setInterests(data)
+
+        console.log("Received interests from backend: ", data);
+      } catch (err) {
+        console.error("Error fetching interests: ", err)
+      }
+    }
+    fetchInterests()
+
+    // fetchEvents()
+  }, [])
+
+  useEffect(() => {
+    if(interests.length > 0) {
+      fetchEvents(interests)
+    }
+  }, [interests])
   
   // Handle clicks outside popup
   useEffect(() => {
@@ -130,26 +137,23 @@ const HomePage = () => {
   return (
     <div
       style={{
-        height: "100vh",
-        width: "100%",
+        minHeight: "100vh",
+        backgroundColor: "#282c34",
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-start",
-        backgroundColor: "#282c34",
-        // paddingTop: "40px",
-        overflow: "auto"
+        color: "white",
+        overflowX: "hidden", 
       }}
     >
 
       <div
         style={{
+          width: "98%",       // was "600px"
           backgroundColor: "#081317",
+          padding: "20px",
           borderRadius: "8px",
           boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-          width: "100%",
-          height: "100vh",
-          boxSizing: "border-box",
-          padding: "20px"
+          position: "relative",  // ensures dropdown stays inside this container
         }}
       >
 
@@ -169,7 +173,6 @@ const HomePage = () => {
             >Search</button>
 
           </div>
-
         </div>
 
         {/* Render events grouped by interest */}
@@ -231,7 +234,16 @@ const HomePage = () => {
             }}
           >
             <h3>{selectedEvent.title}</h3>
-            <p>{selectedEvent.snippet || "No description available"}</p>
+
+            <div
+              style={{
+                maxHeight: "400px",
+                overflow: "auto",
+              }}
+            >
+              <p>{selectedEvent.snippet || "No description available"}</p>
+            </div>
+            
             {selectedEvent.url && (
               <a href={selectedEvent.url} target="_blank" rel="noreferrer">
                 More Info
