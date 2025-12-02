@@ -12,9 +12,6 @@ Code written by Valentina RS
 from flask_cors import CORS
 from flask_cors import cross_origin
 
-from flask_cors import CORS
-from flask_cors import cross_origin
-
 from flask import (
     Flask, request, jsonify, session
 )
@@ -116,22 +113,24 @@ def register():
     data = request.json
     username = data.get("username")
     password = data.get("password")
+
+    trueUser = username.rstrip()
     
-    if not username or not password:
+    if not trueUser or not password:
         return jsonify({"error": "Missing username or password"}), 400
 
-    user = get_user(username)
+    user = get_user(trueUser)
     if user:
         return jsonify({"error": "Username already exist."}), 400
 
-    user_id = add_user(username, password)
+    user_id = add_user(trueUser, password)
     if user_id is None:
         return jsonify({"error": "User could not be created"}), 400
     
     session["user_id"] = user_id
-    session["username"] = username
+    session["username"] = trueUser
 
-    return jsonify({"message": "User created", "user_id": user_id, "username": username})
+    return jsonify({"message": "User created", "user_id": user_id, "username": trueUser})
 
 
 # ---------------------------------------
