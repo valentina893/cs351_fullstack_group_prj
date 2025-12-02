@@ -18,14 +18,6 @@ function App() {
       <Route path="/interests" element={<InterestsPage />}/>
       <Route path="/" element={<Login/>}/>
       <Route path="/Search" element={< SearchPage/>}/>
-      {/* <Route 
-        path="/" 
-        element={
-          <PrivateRoute>
-            <HomePage />
-          </PrivateRoute>
-        } 
-      />   */}
     </Routes>
   );
 }
